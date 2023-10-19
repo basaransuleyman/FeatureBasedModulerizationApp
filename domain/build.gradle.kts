@@ -43,4 +43,9 @@ dependencies {
     implementation (libs.android.core)
     implementation (libs.appcompat)
     androidTestImplementation( libs.espresso.core)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.coroutines.test)
 }
