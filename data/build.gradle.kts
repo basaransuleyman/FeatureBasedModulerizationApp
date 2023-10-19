@@ -48,4 +48,10 @@ dependencies {
     implementation(libs.rx.java.core)
     implementation(libs.android.core)
     implementation(libs.appcompat)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mock.webserver)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+
 }
