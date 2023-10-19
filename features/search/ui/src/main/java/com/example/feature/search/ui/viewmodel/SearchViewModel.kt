@@ -28,6 +28,12 @@ class SearchViewModel @Inject constructor(
     private val _message = MutableStateFlow<SearchStatusMessage>(SearchStatusMessage.NO_RESULT)
     val message: StateFlow<SearchStatusMessage> = _message
 
+    private val _healthPoint = MutableStateFlow("")
+    val healthPoint = _healthPoint.asStateFlow()
+
+    private val _backStackFlag = MutableStateFlow(false)
+    val backStackFlag = _backStackFlag.asStateFlow()
+
     fun getSearchResult(healthPoint: Int, isBackStackEntry: Boolean) {
         viewModelScope.launch {
             _message.update { SearchStatusMessage.LOADING }
@@ -66,6 +72,14 @@ class SearchViewModel @Inject constructor(
         exception.let {
             _message.update { SearchStatusMessage.SEARCH_FAILURE }
         }
+    }
+
+    fun setCustomBackStackFlag(isBackStackEntry: Boolean) {
+        _backStackFlag.update { isBackStackEntry }
+    }
+
+    fun setCustomHealthPoint(healthPointFromStack: String) {
+        _healthPoint.update { healthPointFromStack }
     }
 
 }

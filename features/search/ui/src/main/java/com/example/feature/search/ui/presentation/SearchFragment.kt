@@ -38,8 +38,6 @@ class SearchFragment : Fragment() {
     private lateinit var navController: NavController
 
     private var searchAdapter: SearchAdapter? = null
-    var hp: String? = ""
-    var isFromDetail = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -113,8 +111,8 @@ class SearchFragment : Fragment() {
         override fun afterTextChanged(s: Editable?) {
             val heroHealthPoint = s?.toString()?.toIntOrNull()
             if (heroHealthPoint != null && s.isNotEmpty()) {
-                if (isFromDetail) {
-                    isFromDetail = false
+                if (viewModel.backStackFlag.value) {
+                    viewModel.setCustomBackStackFlag(false)
                     return
                 }
                 binding.closeImageView.visibility = View.VISIBLE
@@ -144,8 +142,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun getCurrentSearchTextAndRefreshList() {
-        val currentSearchText = hp.toString()
-        val heroHealthPoint = currentSearchText.toIntOrNull()
+        val heroHealthPoint = viewModel.healthPoint.value.toIntOrNull()
         if (heroHealthPoint != null) {
             viewModel.getSearchResult(heroHealthPoint, isBackStackEntry = true)
         }
@@ -159,8 +156,8 @@ class SearchFragment : Fragment() {
                     ""
                 )?.collect { result ->
                     if (result.isNotBlank()) {
-                        isFromDetail = true
-                        hp = result
+                        viewModel.setCustomBackStackFlag(true)
+                        viewModel.setCustomHealthPoint(result)
                         getCurrentSearchTextAndRefreshList()
                         clearBackStack()
                     }
