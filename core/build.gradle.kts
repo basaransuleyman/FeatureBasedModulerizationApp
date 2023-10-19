@@ -43,4 +43,8 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.android.core)
     implementation(libs.appcompat)
+
+    implementation(libs.junit)
+    implementation(libs.coroutines.test)
+
 }
