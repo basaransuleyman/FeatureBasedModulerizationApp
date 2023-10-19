@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="no_result">Type the health point you want to search for</string>
+    <string name="delete_success" tools:ignore="ExtraTranslation">tools:ignore="ExtraTranslation"Search was deleted completely</string>
+    <string name="search_success" tools:ignore="ExtraTranslation">Search was success</string>
+    <string name="search_failure" tools:ignore="ExtraTranslation">Search failure</string>
+    <string name="loading" tools:ignore="ExtraTranslation">Search results is coming</string>
+    <string name="empty_list" tools:ignore="ExtraTranslation">We couldn not find data in the range you requested.</string>
+    <string name="search_success_with_back_stack" tools:ignore="ExtraTranslation">Search was success from Back Stack Entry</string>
+    <string name="search">search</string>
+</resources>
