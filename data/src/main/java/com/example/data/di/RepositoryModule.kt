@@ -1,7 +1,5 @@
 package com.example.data.di
 
-import com.example.data.mapper.CardMapper
-import com.example.data.mapper.SearchDataToDomainMapper
 import com.example.data.remote.datasource.SearchDataSource
 import com.example.data.repository.SearchRepositoryImpl
 import com.example.domain.repository.SearchRepository
@@ -19,15 +17,8 @@ object RepositoryModule {
     @Provides
     fun provideHomeRepository(
         dataSource: SearchDataSource,
-        searchDataToDomainMapper: SearchDataToDomainMapper
     ): SearchRepository = SearchRepositoryImpl(
-        dataSource,
-        searchDataToDomainMapper
+        dataSource
     )
 
-    @Singleton
-    @Provides
-    fun provideSearchDataToDomainMapper(cardMapper: CardMapper): SearchDataToDomainMapper {
-        return SearchDataToDomainMapper(cardMapper)
-    }
 }
